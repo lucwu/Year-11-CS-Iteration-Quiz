@@ -1,7 +1,22 @@
+import java.lang.String;
 public class Quiz {
 
     /** 1. Write a method called numberOfVowels that returns the number of vowels in a string.
      Consider a, e, i, o, u as vowels. **/
+
+    public static int numberOfVowels(String string)
+    {
+        int count = 0;
+        String vowels = "AEIOUaeiou";
+        for (int i = 0; i < string.length(); i++)
+        {
+            if (vowels.indexOf(string.charAt(i)) != -1)
+            {
+                count++;
+            }
+        }
+        return count;
+    }
 
 
     /** 2. Write a method called notDivisibleBy235 that finds the number of natural numbers not exceeding N
@@ -15,6 +30,19 @@ public class Quiz {
      5 - divides integer by 5
      Answer: 1 (only one number doesn't divide integer by any of 2, 3, 5) **/
 
+    public static int notDivisibleBy235(int N)
+    {
+        int count = 0;
+        for (int i = 1; i <= N; i++)
+        {
+            if (i % 2 != 0 && i % 3 != 0 && i % 5 != 0)
+            {
+                count++;
+            }
+        }
+        return count;
+    }
+
 
     /** 3. Write a method called camelCaseMe so that it converts dash/underscore delimited words into camel casing.
      * The first word within the output should be capitalized only if the original word was capitalized
@@ -24,6 +52,28 @@ public class Quiz {
      "the-stealth-warrior" gets converted to "theStealthWarrior"
      "The_Stealth_Warrior" gets converted to "TheStealthWarrior"
      "The_Stealth-Warrior" gets converted to "TheStealthWarrior" **/
+
+    public static String camelCaseMe(String string)
+    {
+        String dashUnderscore = "-_";
+        String output = "";
+        for (int i = 0; i < string.length(); i++)
+        {
+            if (dashUnderscore.indexOf(string.charAt(i)) == -1)
+            {
+                output = output + string.charAt(i);
+            }
+            else
+            {
+                if (i+1 != string.length()) {
+                    output = output + string.substring(i + 1, i + 2).toUpperCase();
+                    i++;
+                }
+            }
+        }
+
+        return output;
+    }
 
 
 }
